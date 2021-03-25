@@ -1,5 +1,6 @@
 <template>
   <div class="wrap">
+    <!--    导航栏-->
     <el-menu
       :default-active="activeIndex"
       class="el-menu-demo"
@@ -17,9 +18,11 @@
         :key="index"
         >{{ item.name }}</el-menu-item
       >
+      <!--      登录-->
       <div class="m-tophead">
         <a href="#" class="link">登录</a>
       </div>
+      <!--      搜索框-->
       <div class="m-srch f-pr">
         <div class="srchbg">
           <span class="parent">

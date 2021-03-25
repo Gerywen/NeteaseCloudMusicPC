@@ -61,4 +61,6 @@ a {
 .right {
   float: right;
 }
-
+input {
+  outline: none;
+}

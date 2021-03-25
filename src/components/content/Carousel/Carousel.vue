@@ -2,11 +2,15 @@
   <!--  轮播图-->
   <div class="carousel">
     <div class="wrap">
-      <el-carousel :interval="5000" arrow="always">
-        <el-carousel-item v-for="item in 4" :key="item">
-          <h3>{{ item }}</h3>
-        </el-carousel-item>
-      </el-carousel>
+      <div class="banner-left">
+        <el-carousel :interval="5000" height="285px" arrow="always">
+          <el-carousel-item v-for="(item, index) in banner" :key="index">
+            <a :href="item.url" target="_blank">
+              <img :src="item.imageUrl" alt="" />
+            </a>
+          </el-carousel-item>
+        </el-carousel>
+      </div>
     </div>
   </div>
 </template>
@@ -14,6 +18,14 @@
 <script>
 export default {
   name: "Carousel",
+  props: {
+    banner: {
+      type: Array,
+      default() {
+        return [];
+      },
+    },
+  },
 };
 </script>
 
@@ -26,19 +38,12 @@ export default {
   width: 1100px;
   margin: 0 auto;
 }
-.el-carousel__item h3 {
-  color: #475669;
-  font-size: 18px;
-  opacity: 0.75;
-  line-height: 300px;
-  margin: 0;
+.el-carousel__item img {
+  height: 285px;
 }
-
-.el-carousel__item:nth-child(2n) {
-  background-color: #99a9bf;
-}
-
-.el-carousel__item:nth-child(2n + 1) {
-  background-color: #d3dce6;
+.el-carousel__container{
+  bottom: 0;
+  left: 35%;
+  transform: translateX(-50%);
 }
 </style>

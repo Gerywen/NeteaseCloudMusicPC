@@ -2,12 +2,22 @@
   <div class="home">
     <nav-menu :menu-list="menuList" />
     <carousel :banner="bannerList" />
+    <div class="content">
+<!--      <head-nav :title="hotRecommend" />-->
+      <main-head-nav />
+      <hot-recommend></hot-recommend>
+      <main-head-nav2 />
+    </div>
   </div>
 </template>
 
 <script>
-import NavMenu from "@/components/content/NavMenu/NavMenu";
-import Carousel from "@/components/content/Carousel/Carousel";
+import NavMenu from "@/components/content/navMenu/NavMenu";
+import Carousel from "@/components/content/carousel/Carousel";
+import HotRecommend from "@/components/content/recommend/HotRecommend";
+// import HeadNav from "@/components/common/headNav/HeadNav";
+import mainHeadNav from "@/components/content/mainHeadNav/MainHeadNav";
+import MainHeadNav2 from "@/components/content/mainHeadNav/MainHeadNav2";
 import { baseUrl } from "@/network/axios";
 import { getHomeBanner } from "@/network/home";
 import { menuList } from "@/common/menuJson";
@@ -16,11 +26,15 @@ export default {
   components: {
     NavMenu,
     Carousel,
+    HotRecommend,
+    mainHeadNav,
+    MainHeadNav2,
   },
   data() {
     return {
       menuList: menuList,
       bannerList: [],
+      hotRecommend: "热门推荐",
     };
   },
   created() {
@@ -57,4 +71,12 @@ export default {
   },
 };
 </script>
-<style scoped></style>
+<style scoped>
+.content {
+  width: 1100px;
+  margin: 0 auto;
+  padding: 20px 20px 40px;
+  background-color: #fff;
+  border: 1px solid #cccccc;
+}
+</style>

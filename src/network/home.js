@@ -6,3 +6,10 @@ export function getHomeBanner() {
     url: "/banner",
   });
 }
+export function getHotRecommend() {
+  {
+    return axios({
+      url: "/personalized",
+    });
+  }
+}

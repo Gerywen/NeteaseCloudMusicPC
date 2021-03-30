@@ -3,10 +3,11 @@
     <nav-menu :menu-list="menuList" />
     <carousel :banner="bannerList" />
     <div class="content">
-<!--      <head-nav :title="hotRecommend" />-->
+      <!--      <head-nav :title="hotRecommend" />-->
       <main-head-nav />
       <hot-recommend></hot-recommend>
       <main-head-nav2 />
+      <swiper :week-data="weekData" />
     </div>
   </div>
 </template>
@@ -19,11 +20,13 @@ import HotRecommend from "@/components/content/recommend/HotRecommend";
 import mainHeadNav from "@/components/content/mainHeadNav/MainHeadNav";
 import MainHeadNav2 from "@/components/content/mainHeadNav/MainHeadNav2";
 import { baseUrl } from "@/network/axios";
-import { getHomeBanner } from "@/network/home";
+import { getHomeBanner, getTopAlbum } from "@/network/home";
 import { menuList } from "@/common/menuJson";
+import Swiper from "@/components/content/Swiper/Swiper";
 export default {
   name: "Home",
   components: {
+    Swiper,
     NavMenu,
     Carousel,
     HotRecommend,
@@ -35,10 +38,12 @@ export default {
       menuList: menuList,
       bannerList: [],
       hotRecommend: "热门推荐",
+      weekData: [],
     };
   },
   created() {
     this._getHomeBanner();
+    this._getTopAlbum();
   },
   methods: {
     _getHomeBanner() {
@@ -66,6 +71,11 @@ export default {
           }
         }
         this.bannerList = obj;
+      });
+    },
+    _getTopAlbum() {
+      getTopAlbum().then((res) => {
+        this.weekData = res.albums;
       });
     },
   },

@@ -7,9 +7,12 @@ export function getHomeBanner() {
   });
 }
 export function getHotRecommend() {
-  {
-    return axios({
-      url: "/personalized",
-    });
-  }
+  return axios({
+    url: "/personalized",
+  });
+}
+export function getTopAlbum() {
+  return axios({
+    url: "/album/newest",
+  });
 }
